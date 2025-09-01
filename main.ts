@@ -91,15 +91,14 @@ basic.forever(function () {
     }
 })
 
-class ESerial {
+namespace ESerial {
 
-    setPins(tx_dat: DigitalPin,
-        tx_rdy: DigitalPin,
-        tx_rcv: DigitalPin,
-        rx_dat: DigitalPin,
-        rx_rdy: DigitalPin,
-        rx_rcv: DigitalPin) {
-
+    export function setPins(tx_dat: DigitalPin,
+                            tx_rdy: DigitalPin,
+                            tx_rcv: DigitalPin,
+                            rx_dat: DigitalPin,
+                            rx_rdy: DigitalPin,
+                            rx_rcv: DigitalPin) {
         g_tx_dat = tx_dat
         g_tx_rdy = tx_rdy
         g_tx_rcv = tx_rcv
@@ -111,15 +110,15 @@ class ESerial {
         g_init = true
     }
 
-    available(): boolean {
+    export function available(): boolean {
         return (g_read.length > 0)
     }
 
-    write(str: string) {
+    export function write(str: string) {
         g_write.push(str)
     }
 
-    read(): string {
+    export function read(): string {
         if (g_read.length)
             return g_read.shift()
         return ""
